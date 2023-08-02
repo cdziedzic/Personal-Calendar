@@ -1,10 +1,23 @@
-let savedBtn = $("#savedBtn");
+let saveBtn = $(".saveBtn");
 let currentTime = dayjs().hour()
 let timeBox = document.querySelectorAll('.description')
+let saveBox = document.querySelectorAll('.saveBtn')
 
-savedBtn.on("click", function () {
-  localStorage.setItem("enteredText", $('#savedBtn').parent().children('textArea').val());
+// savedBtn.on("click", function () {
+//   localStorage.setItem("enteredText", $('#savedBtn').parent().children('textArea').val());
+// });
+
+saveBtn.on('click', function (event) {
+  for (let i = 0; i < timeBox.length; i++) {
+    localStorage.setItem(i, $(saveBox[i]).parent().children('textArea').val())
+    
+  }
+  
+ 
 });
+
+
+
 
 checkTime();
 
@@ -39,16 +52,11 @@ function checkTime() {
   // time-block containing the button that was clicked? How might the id be
   // useful when saving the description in local storage?
   //
-  // TODO: Add code to apply the past, present, or future class to each time
-  // block by comparing the id to the current hour. HINTS: How can the id
-  // attribute of each time-block be used to conditionally add or remove the
-  // past, present, and future classes? How can Day.js be used to get the
-  // current hour in 24-hour time?
-  //
+ 
   // TODO: Add code to get any user input that was saved in localStorage and set
   // the values of the corresponding textarea elements. HINT: How can the id
   // attribute of each time-block be used to do this?
   //
-  // TODO: Add code to display the current date in the header of the page.
+
 
   $("#currentDay").text(dayjs().format('dddd, DD, MMMM'));
