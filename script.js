@@ -1,15 +1,35 @@
 let savedBtn = $("#savedBtn");
-let scheduleText = $('#savedBtn').parent().children('textArea').val()
-
+let currentTime = dayjs().hour()
+let timeBox = document.querySelectorAll('.description')
 
 savedBtn.on("click", function () {
   localStorage.setItem("enteredText", $('#savedBtn').parent().children('textArea').val());
 });
 
+checkTime();
 
 function checkTime() {
+  
+  for (let i = 0; i < timeBox.length; i++) {
+    
+  if (timeBox[i].dataset.time == currentTime) {
+    timeBox[i].parentElement.classList.remove('future')
+    timeBox[i].parentElement.classList.remove('past')
+    timeBox[i].parentElement.classList.add("present")
+  }
 
-}
+  if (timeBox[i].dataset.time > currentTime) {
+    timeBox[i].parentElement.classList.remove("present")
+    timeBox[i].parentElement.classList.remove('past')
+    timeBox[i].parentElement.classList.add('future')
+
+  }
+  if (timeBox[i].dataset.time < currentTime) {
+    timeBox[i].parentElement.classList.remove("present")
+    timeBox[i].parentElement.classList.remove('future')
+    timeBox[i].parentElement.classList.add('past')
+}}}
+ 
 
 
   // TODO: Add a listener for click events on the save button. This code should
