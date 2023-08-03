@@ -6,20 +6,25 @@ let savedArray = []
 
 
 saveBtn.on('click', function (event) {
-  for (let i = 0; i < timeBox.length; i++) {
-    savedArray.push($(saveBox[i]).parent().children('textArea').val())
-    
-  }
+  var value = $(this).siblings('.description').val();
+  var time = $(this).parent().attr('id');
   
-  window.localStorage.setItem("inputItems", JSON.stringify(savedArray))
+    localStorage.setItem(time, value)
+  
+  
+
 }); 
 
 
 function populateSaved () {
   for (let i = 0; i < timeBox.length; i++) {
-    let pulledItems = JSON.parse(localStorage.getItem('inputItems'))
+    let pulledItems = localStorage.getItem('inputItems')
     
-    $(saveBox[i]).parent().children('textArea').text(pulledItems[i])
+    // $(saveBox).parent().children('textArea').text(pulledItems[i])
+    if (pulledItems[i] === $attr('id')) {
+      $attr('id').children('textArea').text(pulledItems[i].value)
+    }
+    
   }
 }
 
