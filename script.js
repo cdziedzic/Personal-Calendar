@@ -17,21 +17,18 @@ saveBtn.on('click', function (event) {
 });
 
 function populateSaved() {
-
+// get items out of localstorage and display in their corresponding time box
   for (let i = 0; i < timeBox.length; i++) {
  
    
-    // if the local storage getitem for the current dataset.time is null we do nothing
+    // if the local storage getitem for the current dataset.time is null do nothing
     if (localStorage.getItem(timeBox[i].dataset.time) === null){
       timeBox[i].value = ''
-      
-    } else {
+      } 
+      else {
      
       timeBox[i].value = localStorage.getItem(timeBox[i].dataset.time)
     }
-
-   
-
   }
 };
 
