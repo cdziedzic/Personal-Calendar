@@ -3,7 +3,7 @@ let currentTime = dayjs().hour()
 let timeBox = document.querySelectorAll('.description')
 let saveBox = document.querySelectorAll('.saveBtn')
 let textAreaEl = document.getElementsByClassName('time-block')
-let savedArray = []
+let blockEl = document.querySelectorAll('[data-time]')
 let entries = JSON.parse(localStorage.getItem('inputItems')) || []
 
 saveBtn.on('click', function (event) {
@@ -15,23 +15,26 @@ saveBtn.on('click', function (event) {
     enteredText: textEl,
     dataBox: dataEl
   }    
-  
-  entries.push(entry)
-  
-  localStorage.setItem("inputItems", JSON.stringify(entries))
-  
-  
 
-}); 
+    entries.push(entry)
+    localStorage.setItem("inputItems", JSON.stringify(entries))
 
 
-function populateSaved () {
-  for (let i = 0; i < timeBox.length; i++) {
-    timeBox[i].textContent = entries[i].enteredText
-  }
-}
+    
+    
+    
+    
+    });
+    
+    //  populateSaved() {
 
-checkTime();
+    // document.querySelector("textArea").hasAttribute()
+
+    // loop over the textarea 
+    //     loop over every object in 
+
+
+    checkTime();
 
 function checkTime() {
   
@@ -57,4 +60,4 @@ function checkTime() {
  
   $("#currentDay").text(dayjs().format('dddd, DD, MMMM'));
 
-  populateSaved();
+  // populateSaved();
